@@ -1,0 +1,48 @@
+<h1>All Employee's records</h1>
+<table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Eid</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of emp">
+        <td>{{e.id}}</td>
+        <td>{{e.fname}}</td>
+        <td>{{e.lname}}</td>
+        <td>{{e.age}}</td>
+        <td>{{e.salary}}</td>
+        <td>
+          <button class="btn btn-primary" (click)="editEmp(e)">Edit</button>&nbsp;
+          <button class="btn btn-danger" (click)="delete(e.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<!-- Update Form -->
+<form *ngIf="isEditing" #editForm="ngForm" (ngSubmit)="updateEmp(editForm)">
+  <h2>Edit Employee</h2>
+  <div class="mb-3">
+    <label for="fname">First Name:</label>
+    <input type="text" id="fname" name="fname" class="form-control" [(ngModel)]="editableEmp.fname" required />
+  </div>
+  <div class="mb-3">
+    <label for="lname">Last Name:</label>
+    <input type="text" id="lname" name="lname" class="form-control" [(ngModel)]="editableEmp.lname" required />
+  </div>
+  <div class="mb-3">
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" class="form-control" [(ngModel)]="editableEmp.age" required />
+  </div>
+  <div class="mb-3">
+    <label for="salary">Salary:</label>
+    <input type="number" id="salary" name="salary" class="form-control" [(ngModel)]="editableEmp.salary" required />
+  </div>
+  <button type="submit" class="btn btn-success">Save Changes</button>&nbsp;
+  <button type="button" class="btn btn-danger" (click)="cancelEdit()">Cancel</button>
+</form>

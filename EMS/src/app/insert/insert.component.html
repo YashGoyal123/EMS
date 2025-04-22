@@ -1,0 +1,86 @@
+<h1>Add Employee</h1>
+<form (ngSubmit)="AddEmp()">
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">ID</span>
+    <input
+      type="text"
+      [(ngModel)]="newEmployee.id"
+      name="id"
+      class="form-control"
+      required
+      placeholder="Enter ID"
+      maxlength="5"
+      minlength="1"
+      #id="ngModel"
+      ngModel
+    />
+  </div>
+  <span style="color: red;" *ngIf="id.touched && id.invalid">Please enter a valid ID</span>
+
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">First Name</span>
+    <input
+      type="text"
+      [(ngModel)]="newEmployee.fname"
+      name="fname"
+      class="form-control"
+      required
+      maxlength="20"
+      minlength="3"
+      placeholder="Enter First Name"
+      #fname="ngModel"
+      ngModel
+    />
+  </div>
+  <span style="color: red;" *ngIf="fname.touched && fname.invalid">Please Enter Valid First Name</span>
+
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Last Name</span>
+    <input
+      type="text"
+      [(ngModel)]="newEmployee.lname"
+      name="lname"
+      class="form-control"
+      required
+      minlength="3"
+      maxlength="20"
+      placeholder="Enter Last Name"
+      #lname="ngModel"
+      ngModel
+    />
+  </div>
+  <span style="color: red;" *ngIf="lname.touched && lname.invalid">Please Enter Valid Last Name</span>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Age</span>
+    <input
+      type="number"
+      [(ngModel)]="newEmployee.age"
+      name="age"
+      class="form-control"
+      required
+      minlength="1"
+      maxlength="3"
+      placeholder="Enter Age"
+      #age="ngModel"
+      ngModel
+    />
+  </div>
+  <span style="color: red;" *ngIf="age.touched && age.invalid">Please Enter Valid Age</span>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Salary</span>
+    <input
+      type="number"
+      [(ngModel)]="newEmployee.salary"
+      name="salary"
+      class="form-control"
+      required
+      placeholder="Enter Salary"
+      minlength="3"
+      maxlength="10"
+      #salary="ngModel"
+      ngModel
+    />
+  </div>
+  <span style="color: red;" *ngIf="salary.touched && salary.invalid">Please Enter Valid Salary</span><br>
+  <button type="submit" class="btn btn-primary">Add Employee</button>
+</form>

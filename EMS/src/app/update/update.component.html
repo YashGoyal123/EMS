@@ -1,0 +1,73 @@
+<div>
+    <h1>Update Employee</h1>
+  
+    <form #data="ngForm" (ngSubmit)="UpdateEmp(data)">
+        <label for="id">ID</label>
+      <input
+        type="text"
+        name="id"
+        id="id"
+        class="form-control"
+        required
+        minlength="1"
+        maxlength="5"
+        #id="ngModel"
+        ngModel
+      />
+      <span style="color: red;" *ngIf="id.touched && id.invalid">Please Enter Valid ID</span><br>
+        <label for="fname">First Name</label>
+      <input
+        type="text"
+        name="fname"
+        id="fname"
+        class="form-control"
+        required
+        minlength="3"
+        maxlength="20"
+        ngModel
+        #fname="ngModel"
+      />
+      <span style="color: red;" *ngIf="fname.touched && fname.invalid">Please Enter Valid First Name</span><br>
+        <label for="lname">Last Name</label>
+      <input
+        type="text"
+        name="lname"
+        id="lname"
+        class="form-control"
+        ngModel
+        required
+        minlength="3"
+        maxlength="20"
+        #lname="ngModel"
+      />
+      <span style="color: red;" *ngIf="lname.touched && lname.invalid">Please Enter Valid Last Name</span><br>
+        <label for="age">Age</label>
+      <input
+        type="text"
+        name="age"
+        id="age"
+        class="form-control"
+        ngModel
+        required
+        minlength="1"
+        maxlength="3"
+        #age="ngModel"
+      />
+      <span style="color: red;" *ngIf="age.touched && age.invalid">Please Enter Valid Age</span><br>
+  
+        <label for="salary">Salary</label>
+      <input
+        type="text"
+        name="salary"
+        id="salary"
+        class="form-control"
+        #salary="ngModel"
+        ngModel
+        required
+        minlength="3"
+        maxlength="10"
+      />
+      <span style="color: red;" *ngIf="salary.touched && salary.invalid">Please Enter Valid Salary</span><br>
+      <input type="submit" value="Update" class="btn btn-success" />
+    </form>
+  </div>

@@ -1,0 +1,62 @@
+<h1>Find Employee</h1>
+<form #eid="ngForm" (ngSubmit)="getEmp(eid)">
+    <div class="input-group mb-2">
+        <div class="col-auto">
+            <input type="text" id="id" name="id" class="form-control" aria-label="Employee's-id" aria-describedby="Employee's-id" placeholder="Search by Employee's ID" #id="ngModel" ngModel required maxlength="5" minlength="1">
+        </div>
+        <div>
+          <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+        </div>
+      </div>
+      <span style="color: red;" *ngIf="id.touched && id.invalid">Please Enter Valid ID</span>
+</form>
+<h1>Employee's Record</h1>
+<table class="table" *ngIf="emp">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Eid</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr >
+        <td>{{emp.id}}</td>
+        <td>{{emp.fname}}</td>
+        <td>{{emp.lname}}</td>
+        <td>{{emp.age}}</td>
+        <td>{{emp.salary}}</td>
+        <td>
+          <div class="action-buttons">
+            <button class="btn btn-primary" (click)="editEmp(emp)">Edit</button>&nbsp;
+            <button class="btn btn-danger" (click)="delete(emp.id)">Delete</button>
+          </div>
+        </td>
+       </tr>
+    </tbody>
+</table> 
+<!-- Update Form -->
+<form *ngIf="isEditing" #editForm="ngForm" (ngSubmit)="updateEmp(editForm)">
+  <h2>Edit Employee</h2>
+  <div class="mb-3">
+    <label for="fname">First Name:</label>
+    <input type="text" id="fname" name="fname" class="form-control" [(ngModel)]="editableEmp.fname" required />
+  </div>
+  <div class="mb-3">
+    <label for="lname">Last Name:</label>
+    <input type="text" id="lname" name="lname" class="form-control" [(ngModel)]="editableEmp.lname" required />
+  </div>
+  <div class="mb-3">
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" class="form-control" [(ngModel)]="editableEmp.age" required />
+  </div>
+  <div class="mb-3">
+    <label for="salary">Salary:</label>
+    <input type="number" id="salary" name="salary" class="form-control" [(ngModel)]="editableEmp.salary" required />
+  </div>
+  <button type="submit" class="btn btn-success">Save Changes</button>&nbsp;
+  <button type="button" class="btn btn-danger" (click)="cancelEdit()">Cancel</button>
+</form>
